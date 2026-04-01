@@ -1,6 +1,9 @@
 package lv.venta.controller;
 
+import java.util.Random;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -15,7 +18,14 @@ public class SimpleController {
 		return "show-page"; //ka sauc html lapa kur paradit, tiks paradita show-page.html lapa ieks web parluka
 	}
 	
-	
+	@GetMapping("/data")            //\/ modelis no kura iegust datus
+	public String getDataInPage(Model model) { //localhost:8080/simple/data
+		System.out.println("izpildas datu kontrolieris");
+		Random rand = new Random();
+		String data = "@Karina " + rand.nextInt(2010, 2026); //lai katru reizi dati ir citadaki
+		model.addAttribute("package", data);
+		return "show-data-page"; //tiks paradita show-data-page.html lapa
+	}
 	
 	
 	
