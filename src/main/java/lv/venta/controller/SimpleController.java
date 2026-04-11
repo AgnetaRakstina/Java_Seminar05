@@ -67,6 +67,29 @@ public class SimpleController {
 		return "redirect:/simple/page";
 	}
 	
+	@GetMapping("/update")
+	public String getUpdateProduct(Model model) {
+		Product prod = new Product("Abols", 0.99f, 5, "Garsigs", ProductType.fruit);
+		model.addAttribute("product", prod); //izmanto bezargument konstr lai izveidotu jaunu produktu
+		return "update-product-page";
+	}
+	@PostMapping("/update")
+	public String postUpdateProduct(Product product) {
+		//TODO veic datu parbaudi un saglabasanu, ari CRUD
+		System.out.println(product);
+		return "redirect:/simple/page";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
