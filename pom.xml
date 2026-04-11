@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>lv.venta</groupId>
-	<artifactId>Java_Seminar5</artifactId>
+	<artifactId>JAVA_Seminar5_2026</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Java_Seminar5</name>
+	<name>JAVA_Seminar5_2026</name>
 	<description/>
 	<url/>
 	<licenses>
@@ -30,6 +30,15 @@
 		<java.version>21</java.version>
 	</properties>
 	<dependencies>
+		
+		<!-- Source: https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+<!-- Source: https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <scope>compile</scope>
+</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
