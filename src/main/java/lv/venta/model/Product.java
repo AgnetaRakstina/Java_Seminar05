@@ -35,6 +35,17 @@ public class Product {
 		id = counter++;
 		
 	}
+	
+	public Product() {
+		setTitle("Book");
+		setDescription("Just a book");
+		setPrice(2.55f);
+		setQuantity(5);
+		setProductType(productType.other);
+		id = counter++;
+	}
+	
+	
 	//5. toString - nak no lombok bibliotekas
 	//6. parejas funkcijas
 	public long getId() {
