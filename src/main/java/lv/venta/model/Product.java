@@ -1,11 +1,18 @@
 package lv.venta.model;
 
+import org.hibernate.annotations.ManyToAny;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,18 +34,28 @@ public class Product {
 	private long id;
 	
 	@Column(name = "Title")
+	@NotNull //izmanto lai parbauda referencu tipus
+	@NotEmpty
+	@Pattern(regexp = "[A-Z]{1}[a-z]{2,30}")
 	private String title;
 	
 	@Column(name = "Price")
+	@Min(value = 0)
+	@Max(1000)
 	private float price;
 	
 	@Column(name = "Quantity")
+	@Min(value = 0)
+	@Max(1000)
 	private int quantity;
 	
 	@Column(name = "Description")
+	@Pattern(regexp = "[A-Za-z 0-9]{0,400}")
+	@NotNull // jo string
 	private String description;
 	
 	@Column(name = "ProductType")
+	@NotNull
 	private ProductType productType;
 	
 	//counter id nav vajadzigs, no datu bazes viss ir jau tur veidots
@@ -56,13 +73,8 @@ public class Product {
 		
 	}
 	
-	public Product() {
-		setTitle("Book");
-		setDescription("Just a book");
-		setPrice(2.55f);
-		setQuantity(5);
-		setProductType(productType.other);
-	}
+	public Product() {}
+
 	
 	
 	//5. toString - nak no lombok bibliotekas

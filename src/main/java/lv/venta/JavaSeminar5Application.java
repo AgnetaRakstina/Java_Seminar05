@@ -33,6 +33,16 @@ public class JavaSeminar5Application {
 				prodRepo.save(prod3);
 				
 				
+				//TODO
+				
+				//iegut, vik daudz produkti ir tabula
+				//iegut visus produktus no tabulas
+				//veikt update
+				//veikt dzesanu
+				
+				//pameginat no mooldes aprakstu par MySQL
+				
+				
 				
 			}
 		};
