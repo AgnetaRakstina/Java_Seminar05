@@ -1,6 +1,6 @@
 <html xmlns:th="http://www.thymleaf.org">
 	<body>
-		<h1>Visi produkti mana veikala (dati no JAVA puses)</h1>
+		<h1 th:text="${myHeader}">Visi produkti mana veikala (dati no JAVAS puses):</h1>
 		
 		<table>
 			<tr th:each="tempP : ${package}" >

@@ -10,6 +10,7 @@ import lv.venta.repo.IProductRepo;
 
 import java.util.ArrayList;
 
+@Service
 public class ProductFilterServiceImpl implements IProductFilterService {
 	
 	@Autowired
