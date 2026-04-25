@@ -19,7 +19,7 @@ public class ProductCRUDServiceImpl implements IProductCRUDService {
 
 	@Override
 	public void create(String title, float price, int quantity, String description, ProductType type) throws Exception {
-		if (title == null || !title.matches("[A-Z]{1}[a-z]{2, 30}") 
+		if (title == null || !title.matches("[A-Z]{1}[a-z]{2,30}") 
 				|| price < 0 || price > 1000 
 				|| quantity < 0 || quantity > 1000
 				|| description == null || !description.matches("[A-Za-z 0-9]{0,400}")
