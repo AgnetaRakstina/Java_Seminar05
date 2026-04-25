@@ -23,6 +23,7 @@ public class ProductCRUDController {
 			return "show-all-products-page";//tiks paradita show-all-products-page.html lapa
 		}
 		catch (Exception e) {
+			model.addAttribute("package", e.getMessage());
 			return "error-page";
 		}
 	}
