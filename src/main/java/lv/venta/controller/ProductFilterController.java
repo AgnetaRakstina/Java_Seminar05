@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lv.venta.model.Product;
+import lv.venta.model.ProductType;
 import lv.venta.service.IProductFilterService;
 
 @Controller
@@ -34,4 +35,45 @@ public class ProductFilterController {
 		}
 	}
 
+	@GetMapping("/type/{type}") // localhost:8080/product/filter/type/fruit
+	public String getFilterProductByType(@PathVariable(name = "type") ProductType type, Model model) {
+		try {
+			ArrayList<Product> productsFromDB = prodFilterService.filterByProductTypeEquals(type);
+			model.addAttribute("package", productsFromDB);
+			model.addAttribute("myHeader", "Produkti ar tipu: " + type);
+			return "show-all-products-page";
+			
+		} catch (Exception e) {
+			model.addAttribute("package", e.getMessage());
+			return "error-page";
+		}
+	}
+
+	@GetMapping("/keyword/{keyword}") // localhost:8080//filter/keyword/Abols
+	public String getFilterProductByKeyword(@PathVariable (name = "keyword") String keyword, Model model {
+		try {
+			ArrayList<Products> productsFromDB = prodFilterService.findByTitleContainingOrDescriptionContaining(keyword, keyword);
+			model.addAttribute("package", productsFromDB);
+			model.addAttribute("myHeader", "Produkti, kuru nosaukums vai apraksts satur: " + keyword);
+			return "show-all-products-page";
+			
+		} catch (Exception e) {
+			model.addAttribute("package", e.getMessage());
+			return "error-page";
+		}
+	}
+
+	@GetMapping("/avrprice")
+	public String getAvgPrice(Model model) {
+		try {
+			float avgPrice = prodFilterService.calculateAvrPriceFromDB();
+			model.addAttribute("package", avgPrice);
+			model.addAttribute("myHeader", "Visu precu videja cena ir: " + avgPrice);
+			return "show-all-products-page";
+			
+		} catch (Exception e) {
+			model.addAttribute("package", e.getMessage());
+			return "error-page";
+		}
+	}
 }
