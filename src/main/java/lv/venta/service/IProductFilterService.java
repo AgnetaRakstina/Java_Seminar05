@@ -13,12 +13,12 @@ public interface IProductFilterService {
 	public abstract ArrayList<Product> filterByPriceLessThan(float threshold) throws Exception;
 	
 	//2. funkcija kas izfiltre produktus pec tipa
-	public abstract ArrayList<Product> filterByType(ProductType type) throws Exception;
+	public abstract ArrayList<Product> filterByProductTypeEquals(ProductType type) throws Exception;
 	
 	//3. funkcijas kas izfiltre profuktus pec padoto keyword un skatas title un description
-	public abstract ArrayList<Product> filterByKeyword(String keyword) throws Exception;
+	public abstract ArrayList<Product> filterByTitleContainingOrDescriptionContaining(String keyword) throws Exception;
 	
 	//4. kas aprekina videjo cenu visiem produktiem
-	public abstract float calculateAvgPrice() throws Exception;
+	public abstract float calculateAvgPriceFromDB() throws Exception;
 	
 }
