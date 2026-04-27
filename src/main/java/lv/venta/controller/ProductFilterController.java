@@ -52,7 +52,7 @@ public class ProductFilterController {
 	@GetMapping("/keyword/{keyword}") // localhost:8080//filter/keyword/Abols
 	public String getFilterProductByKeyword(@PathVariable (name = "keyword") String keyword, Model model {
 		try {
-			ArrayList<Products> productsFromDB = prodFilterService.findByTitleContainingOrDescriptionContaining(keyword, keyword);
+			ArrayList<Products> productsFromDB = prodFilterService.filterByTitleContainingOrDescriptionContaining(keyword, keyword);
 			model.addAttribute("package", productsFromDB);
 			model.addAttribute("myHeader", "Produkti, kuru nosaukums vai apraksts satur: " + keyword);
 			return "show-all-products-page";
