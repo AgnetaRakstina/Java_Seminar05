@@ -34,11 +34,11 @@ public class ProductFilterController {
 			return "error-page";
 		}
 	}
-
+	
 	@GetMapping("/type/{type}") // localhost:8080/product/filter/type/fruit
 	public String getFilterProductByType(@PathVariable(name = "type") ProductType type, Model model) {
 		try {
-			ArrayList<Product> productsFromDB = prodFilterService.filterByProductTypeEquals(type);
+			ArrayList<Product> productsFromDB = prodFilterService.filterByType(type);
 			model.addAttribute("package", productsFromDB);
 			model.addAttribute("myHeader", "Produkti ar tipu: " + type);
 			return "show-all-products-page";
@@ -49,10 +49,10 @@ public class ProductFilterController {
 		}
 	}
 
-	@GetMapping("/keyword/{keyword}") // localhost:8080//filter/keyword/Abols
-	public String getFilterProductByKeyword(@PathVariable (name = "keyword") String keyword, Model model {
+	@GetMapping("/keyword/{keyword}") // http://localhost:8080/product/filter/keyword/Abols
+	public String getFilterProductByKeyword(@PathVariable (name = "keyword") String keyword, Model model) {
 		try {
-			ArrayList<Products> productsFromDB = prodFilterService.filterByTitleContainingOrDescriptionContaining(keyword, keyword);
+			ArrayList<Product> productsFromDB = prodFilterService.filterByKeyword(keyword);
 			model.addAttribute("package", productsFromDB);
 			model.addAttribute("myHeader", "Produkti, kuru nosaukums vai apraksts satur: " + keyword);
 			return "show-all-products-page";
@@ -63,17 +63,18 @@ public class ProductFilterController {
 		}
 	}
 
-	@GetMapping("/avrprice")
+	@GetMapping("/avgprice")
 	public String getAvgPrice(Model model) {
 		try {
-			float avgPrice = prodFilterService.calculateAvrPriceFromDB();
+			float avgPrice = prodFilterService.calculateAvgPriceFromDB();
 			model.addAttribute("package", avgPrice);
 			model.addAttribute("myHeader", "Visu precu videja cena ir: " + avgPrice);
-			return "show-all-products-page";
+			return "show-data-page";
 			
 		} catch (Exception e) {
 			model.addAttribute("package", e.getMessage());
 			return "error-page";
 		}
 	}
+
 }

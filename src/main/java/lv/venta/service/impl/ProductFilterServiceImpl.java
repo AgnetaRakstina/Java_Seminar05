@@ -62,7 +62,7 @@ public class ProductFilterServiceImpl implements IProductFilterService {
 		return result;
 	}
 	
-	public float calculateAvgPrice() throws Exception {
+	public float calculateAvgPriceFromDB() throws Exception {
 		if (prodRepo.count() == 0) {
 			throw new Exception ("DB nav produktu un nevar aprekinat videjo cenu");
 		}
@@ -70,6 +70,8 @@ public class ProductFilterServiceImpl implements IProductFilterService {
 				
 		return result;
 	}
+
+	
 	
 	
 	

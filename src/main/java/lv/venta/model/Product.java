@@ -21,7 +21,7 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@NoArgsConstructor
+//@NoArgsConstructor
 @ToString
 @Table(name = "ProductTable")
 @Entity // datu vieniba ka obligati jabut unikala
